@@ -3,6 +3,7 @@ require_relative('models/star')
 require_relative('models/movie')
 require_relative('models/casting')
 
+Movie.delete_all()
 Star.delete_all()
 
 star1 = Star.new({
@@ -17,8 +18,18 @@ star2 = Star.new({
 })
 star2.save()
 
-star2.first_name = 'Matthew'
-star2.update()
+movie1 = Movie.new({
+    'title' => 'Saving Private Bryan',
+    'genre' => 'drama'
+})
+movie1.save()
+
+movie1.title = 'Saving Private Ryan'
+movie1.update()
+# movie1.delete()
+
+
+
 
 binding.pry
 nil
