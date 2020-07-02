@@ -30,12 +30,17 @@ movie2 = Movie.new({
 })
 movie2.save()
 
-movie1.title = 'Saving Private Ryan'
-movie1.update()
-# movie1.delete()
+casting1 = Casting.new({
+    'star_id' => star1.id,
+    'movie_id' => movie1.id
+})
+casting1.save()
 
-
-
+casting2 = Casting.new({
+    'star_id' => star2.id,
+    'movie_id' => movie1.id
+})
+casting2.save()
 
 binding.pry
 nil
