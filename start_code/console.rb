@@ -24,6 +24,12 @@ movie1 = Movie.new({
 })
 movie1.save()
 
+movie2 = Movie.new({
+    'title' => 'Forrest Gump',
+    'genre' => 'romcom'
+})
+movie2.save()
+
 movie1.title = 'Saving Private Ryan'
 movie1.update()
 # movie1.delete()
