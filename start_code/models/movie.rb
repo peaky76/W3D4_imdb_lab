@@ -9,18 +9,19 @@ class Movie
         @id = options['id'].to_i() if options['id']
         @title = options['title']
         @genre = options['genre']
+        @budget = options['budget'].to_i
     end
 
     def save()
-        sql = "INSERT INTO movies (title, genre) VALUES ($1, $2) RETURNING id"
-        values = [@title, @genre]
+        sql = "INSERT INTO movies (title, genre, budget) VALUES ($1, $2, $3) RETURNING id"
+        values = [@title, @genre, @budget]
         movie = SqlRunner.run(sql, values).first
         @id = movie['id'].to_i
     end
 
     def update()
-        sql = "UPDATE movies SET (title, genre) = ($1, $2) WHERE id = $3"
-        values = [@title, @genre, @id]
+        sql = "UPDATE movies SET (title, genre, budget) = ($1, $2, $3) WHERE id = $3"
+        values = [@title, @genre, @budget, @id]
         SqlRunner.run(sql, values)
     end
 
@@ -51,5 +52,5 @@ class Movie
         result = stars.map { |star| Star.new(star) }
         return result
     end
-    
+
 end
